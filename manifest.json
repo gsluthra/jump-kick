@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Jump Kick",
   "version": "1.0",
-  "description": "Quickly switch between open tabs with fuzzy search",
+  "description": "Quickly jump between open tabs with fuzzy keyboard search",
   "permissions": ["tabs", "activeTab", "storage"],
   "background": {
     "scripts": ["background.js"]
@@ -37,5 +37,6 @@
     "48": "icons/icon-48.png",
     "96": "icons/icon-96.png",
     "128": "icons/icon-128.png"
-  }
+  },
+  "homepage_url": "https://github.com/gsluthra/jump-kick"
 }
