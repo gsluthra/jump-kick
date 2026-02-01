@@ -5,7 +5,7 @@
 
 body {
   font-family: system-ui, sans-serif;
-  width: 380px;
+  width: 520px;
   margin: 0;
   padding: 8px;
   background: #ffffff;
@@ -22,12 +22,12 @@ body {
   list-style: none;
   padding: 0;
   margin: 8px 0 0 0;
-  max-height: 320px;
+  max-height: 580px;
   overflow-y: auto;
 }
 
 li {
-  padding: 6px;
+  padding: 4px 6px;
   cursor: pointer;
   display: flex;
   align-items: center;
