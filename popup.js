@@ -42,6 +42,10 @@ themeQuery.addEventListener("change", applyTheme);
 
 
 async function loadTabs() {
+  // Load highlight setting  
+  const stored = await browser.storage.local.get("highlightEnabled");
+  highlightEnabled = stored.highlightEnabled === true
+
   allTabs = await browser.tabs.query({});
 
   // Sort by most recently used
@@ -61,7 +65,7 @@ async function loadTabs() {
 }
 
 function highlightMatches(text, matches, key) {
-  if (!matches) return text;
+  if (!highlightEnabled || !matches) return text;
 
   const match = matches.find(m => m.key === key);
   if (!match) return text;

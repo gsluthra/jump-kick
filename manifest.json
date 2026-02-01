@@ -3,7 +3,7 @@
   "name": "Foo-Tab",
   "version": "1.0",
   "description": "Quickly switch between open tabs with fuzzy search",
-  "permissions": ["tabs", "activeTab"],
+  "permissions": ["tabs", "activeTab", "storage"],
   "background": {
     "scripts": ["background.js"]
   },
@@ -19,5 +19,9 @@
       },
       "description": "Quick tab switcher"
     }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
   }
 }
