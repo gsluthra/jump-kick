@@ -3,36 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <title>Tab Switcher Settings</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      padding: 20px;
-      max-width: 500px;
-    }
-
-    label {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      margin-bottom: 12px;
-    }
-
-    input[type="checkbox"] {
-      margin-right: 8px;
-    }
-  </style>
+  <link rel="stylesheet" href="options.css" />
 </head>
 <body>
-  <h2>foo-tab switcher settings</h2>
+  <div class="container">
+    <h1>foo-tab</h1>
+    <p class="subtitle">Customize how your tab search behaves</p>
 
-  <label>
-    <input type="checkbox" id="highlightToggle">
-    Highlight matched characters in results
-  </label>
+    <div class="card">
+      <label class="setting">
+        <input type="checkbox" id="highlightToggle">
+        <div>
+          <div class="setting-title">Highlight matched characters</div>
+          <div class="setting-desc">
+            Visually highlight letters that match your search query in tab titles and URLs.
+          </div>
+        </div>
+      </label>
+    </div>
 
-  <label>
-    Note: Preferences are saved automatically. You can close the tab when done.
-  </label>
+    <p class="footer">Changes are saved automatically.</p>
+  </div>
 
   <script src="options.js"></script>
 </body>
