@@ -7,6 +7,30 @@ let fuse;
 let selectedIndex = 0;
 let currentResults = [];
 
+//Force focus on the search input
+function forceFocus() {
+  searchInput.focus();
+  searchInput.select(); // Optional: selects existing text
+}
+
+// Focus when popup loads
+document.addEventListener("DOMContentLoaded", () => {
+  // Small delay ensures popup is fully ready
+  setTimeout(forceFocus, 50);
+});
+
+// Refocus if popup regains visibility
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
+    setTimeout(forceFocus, 10);
+  }
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target !== searchInput) {
+    forceFocus();
+  }
+});
 
 function applyTheme(e) {
   document.documentElement.dataset.theme = e.matches ? "dark" : "light";
