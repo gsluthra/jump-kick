@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Foo-Tab",
+  "name": "Jump Kick",
   "version": "1.0",
   "description": "Quickly switch between open tabs with fuzzy search",
   "permissions": ["tabs", "activeTab", "storage"],
@@ -9,7 +9,7 @@
   },
   "browser_action": {
     "default_popup": "popup.html",
-    "default_title": "foo-tab: Quick Tab Switcher"
+    "default_title": "jump-kick: Quick Tab Switcher"
   },
   "commands": {
     "open-tab-switcher": {

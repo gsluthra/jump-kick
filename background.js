@@ -10,7 +10,7 @@ async function updateTooltip() {
     const cmd = commands.find(c => c.name === "open-tab-switcher");
 
     const shortcut = cmd && cmd.shortcut ? cmd.shortcut : "a shortcut";
-    const title = `foo-tab with [${shortcut}] to quickly search tabs`;
+    const title = `jump-kick with [${shortcut}] to quickly search tabs`;
 
     browser.browserAction.setTitle({ title });
   } catch (e) {
