@@ -7,6 +7,19 @@ let fuse;
 let selectedIndex = 0;
 let currentResults = [];
 
+//Sets the shortcut hint in the popup
+async function loadShortcutHint() {
+  const commands = await browser.commands.getAll();
+  const cmd = commands.find(c => c.name === "open-tab-switcher");
+
+  const hint = document.getElementById("shortcutHint");
+  if (!hint) return;
+
+  hint.textContent = cmd && cmd.shortcut ? cmd.shortcut : "Set shortcut";
+}
+
+loadShortcutHint();
+
 //Force focus on the search input
 function forceFocus() {
   searchInput.focus();
