@@ -68,6 +68,18 @@ mark {
   font-size: 12px;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+
 .title {
   font-weight: 600;
   color: #374151;
