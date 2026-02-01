@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Foo-Tab",
+  "version": "1.0",
+  "description": "Quickly switch between open tabs with fuzzy search",
+  "permissions": ["tabs", "activeTab"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Switch Tab"
+  },
+  "commands": {
+    "open-tab-switcher": {
+      "suggested_key": {
+        "mac": "Command+Shift+Space",
+        "default": "Ctrl+Shift+Space"
+      },
+      "description": "Quick tab switcher"
+    }
+  }
+}

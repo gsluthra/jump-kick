@@ -1,0 +1,86 @@
+:root[data-theme="dark"] body {
+  background: #1e1e1e;
+  color: #e6e6e6;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  width: 380px;
+  margin: 0;
+  padding: 8px;
+  background: #ffffff;
+}
+
+#search {
+  width: 100%;
+  padding: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#results {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+li {
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+li.selected {
+  background-color: #e0e0e0;
+}
+
+li img {
+  margin-right: 8px;
+}
+
+li div {
+  display: flex;
+  flex-direction: column;
+}
+
+li div span.url {
+  font-size: 11px;
+  color: gray;
+}
+
+mark {
+  background-color: #ffeb3b;
+  color: black;
+  padding: 0 1px;
+  border-radius: 2px;
+}
+
+/* ===== Dark Mode Support ===== */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1e1e1e;
+    color: #e6e6e6;
+  }
+
+  #search {
+    background: #2b2b2b;
+    color: #ffffff;
+    border: 1px solid #444;
+  }
+
+  li.selected {
+    background-color: #333a45;
+  }
+
+  li span.url {
+    color: #9aa0a6;
+  }
+
+  mark {
+    background-color: #ffd54f;
+    color: #000;
+  }
+}
