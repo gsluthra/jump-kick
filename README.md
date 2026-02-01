@@ -1,4 +1,4 @@
-# 🟥🟨 Jump-Kick — Lightning Fast Tab Switcher for Firefox
+# ![Jump-Kick Icon](icons/icon-128.png) Jump-Kick — Lightning Fast Tab Switcher for Firefox
 
 **Jump-Kick** lets you instantly jump to any open tab using a powerful fuzzy search — just like a command palette for your browser.
 
