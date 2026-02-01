@@ -1,7 +1,27 @@
+/* For dark theme support */
 :root[data-theme="dark"] body {
   background: #1e1e1e;
   color: #e6e6e6;
 }
+
+:root[data-theme="dark"] .header {
+  border-bottom: 1px solid #334155;
+  background: transparent;
+}
+
+:root[data-theme="dark"] .title {
+  color: #e2e8f0;
+}
+
+:root[data-theme="dark"] .shortcut-hint {
+  background: #1e293b;
+  color: #cbd5e1;
+}
+
+:root[data-theme="dark"] li.selected {
+  background-color: #2a3441;
+}
+/* End dark theme support */
 
 body {
   font-family: system-ui, sans-serif;
@@ -9,6 +29,7 @@ body {
   margin: 0;
   padding: 8px;
   background: #ffffff;
+  color: #1f2937;  
 }
 
 #search {
@@ -66,6 +87,7 @@ mark {
   padding: 2px 2px 6px 2px;
   border-bottom: 1px solid #e5e7eb;
   font-size: 12px;
+  background: transparent;
 }
 
 .brand {
@@ -82,7 +104,7 @@ mark {
 
 .title {
   font-weight: 600;
-  color: #374151;
+  color: inherit;
 }
 
 .shortcut-hint {
@@ -91,44 +113,4 @@ mark {
   padding: 2px 6px;
   border-radius: 6px;
   color: #4b5563;
-}
-
-/* ===== Dark Mode Support ===== */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #1e1e1e;
-    color: #e6e6e6;
-  }
-
-  #search {
-    background: #2b2b2b;
-    color: #ffffff;
-    border: 1px solid #444;
-  }
-
-  li.selected {
-    background-color: #333a45;
-  }
-
-  li span.url {
-    color: #9aa0a6;
-  }
-
-  mark {
-    background-color: #ffd54f;
-    color: #000;
-  }
-
-  .header {
-    border-bottom: 1px solid #334155;
-  }
-
-  .title {
-    color: #e2e8f0;
-  }
-
-  .shortcut-hint {
-    background: #1e293b;
-    color: #cbd5e1;
-  }
 }

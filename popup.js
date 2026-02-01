@@ -1,3 +1,28 @@
+//Check for themes and apply dark/light mode
+(async function initTheme() {
+  try {
+    const theme = await browser.theme.getCurrent();
+    const bg = theme.colors?.toolbar;
+
+    if (!bg) return;
+
+    const isDark = isColorDark(bg);
+    document.documentElement.dataset.theme = isDark ? "dark" : "light";
+  } catch (e) {
+    console.error("Theme detection failed", e);
+  }
+})();
+
+function isColorDark(color) {
+  const ctx = document.createElement("canvas").getContext("2d");
+  ctx.fillStyle = color;
+  const rgb = ctx.fillStyle.match(/\d+/g);
+  if (!rgb) return false;
+
+  const [r, g, b] = rgb.map(Number);
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness < 128;
+}
 
 const searchInput = document.getElementById("search");
 const resultsList = document.getElementById("results");
