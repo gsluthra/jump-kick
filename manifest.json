@@ -38,5 +38,13 @@
     "96": "icons/icon-96.png",
     "128": "icons/icon-128.png"
   },
-  "homepage_url": "https://github.com/gsluthra/jump-kick"
+  "homepage_url": "https://github.com/gsluthra/jump-kick",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "jump-kick@addon",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  }
 }
