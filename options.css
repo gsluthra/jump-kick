@@ -81,3 +81,24 @@ h1 {
   font-size: 12px;
   color: var(--subtext);
 }
+
+.about p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.about a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.about a:hover {
+  text-decoration: underline;
+}
+
+.meta {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--subtext);
+}

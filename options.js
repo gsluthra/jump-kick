@@ -12,3 +12,10 @@ toggle.addEventListener("change", async () => {
 });
 
 loadSettings();
+
+// Show extension version
+const versionEl = document.getElementById("version");
+if (versionEl) {
+  const manifest = browser.runtime.getManifest();
+  versionEl.textContent = manifest.version;
+}

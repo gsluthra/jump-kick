@@ -8,9 +8,12 @@
 <body>
   <div class="container">
     <h1>foo-tab</h1>
-    <p class="subtitle">Customize how your tab search behaves</p>
+    <p class="subtitle">Quick fuzzy search across all open tabs</p>
 
+    <!-- SETTINGS CARD -->
     <div class="card">
+      <h2>Preferences</h2>
+
       <label class="setting">
         <input type="checkbox" id="highlightToggle">
         <div>
@@ -20,6 +23,24 @@
           </div>
         </div>
       </label>
+    </div>
+
+    <!-- ABOUT CARD -->
+    <div class="card about">
+      <h2>About</h2>
+
+      <p><strong>foo-tab</strong> helps you instantly jump to any open tab using fuzzy keyboard search.</p>
+
+      <p>
+        🔗 <a href="https://github.com/gsluthra/foo-tab" target="_blank">
+        View project on GitHub
+        </a>
+      </p>
+
+      <p class="meta">
+        Version <span id="version"></span><br>
+        Built for Firefox
+      </p>
     </div>
 
     <p class="footer">Changes are saved automatically.</p>
