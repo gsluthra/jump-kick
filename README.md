@@ -50,6 +50,18 @@ You can change this anytime:
 
 ---
 
+## 🧠 Screenshots
+
+![Light Theme Screenshot](screenshots/1_light-theme-screenshot.jpg)
+
+![Dark Theme Screenshot](screenshots/2_dark-theme-screenshot.jpg)
+
+![Preferences](screenshots/3_preferences-screenshot3.jpg)
+
+![With highlighting ON](screenshots/4_light_theme_with_Highlights_on.jpg)
+
+---
+
 ## ⚙️ Settings
 
 Open:
