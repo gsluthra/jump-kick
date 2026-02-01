@@ -102,3 +102,27 @@ h1 {
   font-size: 12px;
   color: var(--subtext);
 }
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 18px 0;
+}
+
+.shortcut-box {
+  margin-top: 8px;
+  padding: 8px 12px;
+  display: inline-block;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 14px;
+}
+
+.shortcut-help {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--subtext);
+  line-height: 1.4;
+}

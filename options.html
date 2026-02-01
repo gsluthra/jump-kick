@@ -14,15 +14,33 @@
     <div class="card">
       <h2>Preferences</h2>
 
-      <label class="setting">
-        <input type="checkbox" id="highlightToggle">
-        <div>
-          <div class="setting-title">Highlight matched characters</div>
-          <div class="setting-desc">
-            Visually highlight letters that match your search query in tab titles and URLs.
-          </div>
-        </div>
-      </label>
+        <div class="shortcut">
+            <div class="setting-title">Keyboard Shortcut</div>
+            <div class="setting-desc">
+                Opens the Tab Switcher from anywhere in Firefox.
+            </div>
+
+            <div class="shortcut-box">
+                <span id="shortcutDisplay">Checking...</span>
+            </div>
+
+            <div class="shortcut-help">
+                To change this shortcut, open Firefox's Add-ons Manager, by typing "about:addons" in the address bar.
+                Once the tab opens, click on the gear icon ⚙️ in the top-right corner and select "Manage Extension Shortcuts".
+            </div>
+        </div>      
+
+        <hr class="divider">
+
+        <label class="setting">
+            <input type="checkbox" id="highlightToggle">
+            <div>
+            <div class="setting-title">Highlight matched characters</div>
+            <div class="setting-desc">
+                Visually highlight letters that match your search query in tab titles and URLs.
+            </div>
+            </div>
+        </label>
     </div>
 
     <!-- ABOUT CARD -->
