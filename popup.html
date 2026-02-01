@@ -5,8 +5,19 @@
   <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
-  <input id="search" type="text" placeholder="Type tab name..." autofocus />
-  <ul id="results"></ul>
+  
+    <input
+    id="search"
+    type="text"
+    placeholder="Type tab name..."
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    spellcheck="false"
+    autofocus
+    />
+
+    <ul id="results"></ul>
 
   <script src="fuse.min.js"></script>
   <script src="popup.js"></script>
