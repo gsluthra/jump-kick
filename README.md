@@ -74,7 +74,7 @@ Available options:
 
 ---
 
-## 🧠 Why Jump-Kick?
+## 🗼 Why Jump-Kick?
 
 Browsers make it easy to open tabs…  
 but hard to *find* the one you need.
@@ -97,6 +97,26 @@ Jump-Kick:
 
 ---
 
+## 📦 Installation
+
+## From Firefox Online Add-ons Store 
+1. Open firefox.
+2. Go to URL: https://addons.mozilla.org/en-US/firefox/addon/jump-kick-quick-tab-switcher/
+3. Click on "Add to Firefox" button.
+4. Select "Pin to toolbar" (so you can always see it).
+5. You should now be able to use the Extension (Cmd+Shift+Space on mac, or Control+Shift+Space on windows).
+
+## Local Development Install
+
+1. In firefox, open an new tab and type `about:debugging`
+2. On the left side, select: **This Firefox**
+3. Click **Load Temporary Add-on**
+4. Select `manifest.json`
+5. You should now be able to use the Extension.
+
+---
+
+
 ## 🛠 Development
 
 This extension is built using the Firefox WebExtensions API.
@@ -107,16 +127,6 @@ Main components:
 - `background.js` — Keyboard shortcut + tooltip  
 - `options.html/js` — Settings page  
 - `Fuse.js` — Lightweight fuzzy search library
-
----
-
-## 📦 Installation (Temporary)
-
-1. In firefox, open an new tab and type `about:debugging`
-2. On the left side, select: **This Firefox**
-3. Click **Load Temporary Add-on**
-4. Select `manifest.json`
-5. You should now be able to use the Extension.
 
 ---
 
