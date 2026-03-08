@@ -4,6 +4,7 @@
 
 Hit a shortcut, type a few letters, and *kick* straight to the tab you want.
 
+![Tests](https://github.com/gsluthra/jump-kick/actions/workflows/test.yml/badge.svg)
 ---
 
 ## ⚡ Features
