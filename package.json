@@ -1,0 +1,12 @@
+{
+  "name": "jump-kick",
+  "private": true,
+  "scripts": {
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "geckodriver": "^4.0.0",
+    "selenium-webdriver": "^4.41.0",
+    "selenium-webext-bridge": "^0.1.0"
+  }
+}

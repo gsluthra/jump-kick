@@ -128,6 +128,8 @@ Main components:
 - `options.html/js` — Settings page  
 - `Fuse.js` — Lightweight fuzzy search library
 
+Run integration tests with: `node test.js`
+
 ---
 
 ## 🌟 Contributing
