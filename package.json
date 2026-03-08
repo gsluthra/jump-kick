@@ -5,8 +5,8 @@
     "test": "node test.js"
   },
   "dependencies": {
-    "geckodriver": "*",
-    "selenium-webdriver": "^4.0.0",
+    "geckodriver": "^4.0.0",
+    "selenium-webdriver": "^4.41.0",
     "selenium-webext-bridge": "^0.1.0"
   }
 }
