@@ -32,6 +32,31 @@ body {
   color: #1f2937;  
 }
 
+/** Prevent the popup from scrolling when using arrow keys to navigate results */
+html, body {
+  overflow: hidden;
+}
+
+/** Ensure last result is clearly visible */
+#results {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  max-height: 580px;
+  overflow-y: auto;
+  padding-bottom: 6px;
+}
+
+/** VsCode like margin for better view */
+li {
+  padding: 4px 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  scroll-margin-bottom: 6px;
+}
+
 #search {
   width: 100%;
   padding: 6px;

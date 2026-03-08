@@ -148,6 +148,16 @@ function renderResults(results) {
   });
 }
 
+function ensureSelectionVisible() {
+    const selected = document.querySelector("#results li.selected");
+    if (selected) {
+      selected.scrollIntoView({
+        block: "nearest",
+        behavior: "smooth"
+      });
+    }
+  }
+
 function activateTab(tab) {
   browser.tabs.update(tab.id, { active: true });
   browser.windows.update(tab.windowId, { focused: true });
@@ -163,16 +173,27 @@ searchInput.addEventListener("input", () => {
   selectedIndex = 0;
   currentResults = searchTabs(searchInput.value);
   renderResults(currentResults);
+  ensureSelectionVisible();
 });
 
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "ArrowDown") {
+    e.preventDefault();
+
     selectedIndex = Math.min(selectedIndex + 1, currentResults.length - 1);
     renderResults(currentResults);
+    ensureSelectionVisible();
+
   } else if (e.key === "ArrowUp") {
+    e.preventDefault();
+    
     selectedIndex = Math.max(selectedIndex - 1, 0);
     renderResults(currentResults);
+    ensureSelectionVisible();
+
   } else if (e.key === "Enter" && currentResults.length > 0) {
+    e.preventDefault();
+    
     activateTab(currentResults[selectedIndex].item);
   }
 });
