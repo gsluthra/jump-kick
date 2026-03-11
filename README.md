@@ -18,6 +18,9 @@ Hit a shortcut, type a few letters, and *kick* straight to the tab you want.
 - ⌨️ **Keyboard First**  
   Navigate results with arrow keys and press **Enter** to switch.
 
+- ↕️ **Sort Commands (type `sort`)**  
+  Quickly sort tabs by **URL**, **domain**, **title**, or **last accessed**.
+
 - 🌓 **Auto Light/Dark Mode**  
   Matches your Firefox theme automatically.
 
@@ -46,6 +49,7 @@ You can change this anytime:
 
 1. Press the shortcut  
 2. Start typing part of a tab’s title or URL  
+   - Or type `sort` to see sorting commands
 3. Use ↑ ↓ arrow keys to select  
 4. Press **Enter** to jump
 

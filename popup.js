@@ -32,6 +32,44 @@ let fuse;
 let selectedIndex = 0;
 let currentResults = [];
 
+const COMMANDS = [
+  {
+    id: "sort-url",
+    title: "Sort tabs by URL",
+    keywords: ["sort", "url", "alphabetical"],
+    action: sortTabsByURL
+  },
+  {
+    id: "sort-domain",
+    title: "Sort tabs by domain",
+    keywords: ["sort", "domain"],
+    action: sortTabsByDomain
+  },
+  {
+    id: "sort-title",
+    title: "Sort tabs by title",
+    keywords: ["sort", "title"],
+    action: sortTabsByTitle
+  },
+  {
+    id: "sort-recent",
+    title: "Sort tabs by last accessed",
+    keywords: ["sort", "recent"],
+    action: sortTabsByLastAccessed
+  }
+];
+
+function getCommandResults(query) {
+
+  const q = query.toLowerCase();
+  if (!q || q.length < 2) return []; // don’t show sort commands for just “s”
+
+  return COMMANDS.filter(cmd =>
+    cmd.title.toLowerCase().includes(q) ||
+    cmd.keywords.some(k => k.includes(q))
+  );
+}
+
 //Sets the shortcut hint in the popup
 async function loadShortcutHint() {
   const commands = await browser.commands.getAll();
@@ -121,29 +159,46 @@ function highlightMatches(text, matches, key) {
   return highlighted;
 }
 
+async function activateResult(result) {
+  if (result.type === "command" && typeof result.action === "function") {
+    await result.action();
+    window.close();
+    return;
+  }
+
+  const tab = result.item || result;
+  activateTab(tab);
+}
+
 function renderResults(results) {
   resultsList.innerHTML = "";
 
   results.forEach((result, index) => {
+    const isCommand = result.type === "command";
     const tab = result.item || result;
-    const matches = result.matches || [];
 
     const li = document.createElement("li");
+    if (isCommand) {
+      li.classList.add("command");
+      li.innerHTML = `
+        <div class="command-row">⚡ ${result.title}</div>
+        </div>
+      `;
+    } else {
+      const title = highlightMatches(tab.title || tab.url, result.matches || [], "title");
+      const url = highlightMatches(tab.url || "", result.matches || [], "url");
 
-    const title = highlightMatches(tab.title || tab.url, matches, "title");
-    const url = highlightMatches(tab.url || "", matches, "url");
-
-    li.innerHTML = `
-      <img src="${tab.favIconUrl || ''}" width="16" height="16">
-      <div>
-        <span>${title}</span>
-        <span class="url">${url}</span>
-      </div>
-    `;
+      li.innerHTML = `
+        <img src="${tab.favIconUrl || ''}" width="16" height="16">
+        <div>
+          <span>${title}</span>
+          <span class="url">${url}</span>
+        </div>
+      `;
+    }
 
     if (index === selectedIndex) li.classList.add("selected");
-
-    li.addEventListener("click", () => activateTab(tab));
+    li.addEventListener("click", () => activateResult(result));
     resultsList.appendChild(li);
   });
 }
@@ -166,8 +221,85 @@ function activateTab(tab) {
 
 function searchTabs(query) {
   if (!query) return allTabs.map(tab => ({ item: tab, matches: [] }));
-  return fuse.search(query);
+
+  const fuseResults = fuse.search(query);
+  const tabResults = fuseResults.map(r => ({
+    type: "tab",
+    ...r.item
+  }));
+
+  const commandResults = getCommandResults(query).map(cmd => ({
+    type: "command",
+    title: cmd.title,
+    action: cmd.action
+  }));
+
+  const results = [
+    ...commandResults,
+    ...tabResults
+  ];
+  return results;
 }
+
+// Methods to sort tabs
+
+async function sortTabsByURL() {
+  const tabs = await browser.tabs.query({ currentWindow: true });
+
+  const sorted = [...tabs].sort((a, b) =>
+    (a.url || "").localeCompare(b.url || "")
+  );
+
+  for (let i = 0; i < sorted.length; i++) {
+    await browser.tabs.move(sorted[i].id, { index: i });
+  }
+}
+
+function getDomain(url) {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return "";
+  }
+}
+
+async function sortTabsByDomain() {
+  const tabs = await browser.tabs.query({ currentWindow: true });
+
+  const sorted = [...tabs].sort((a, b) =>
+    getDomain(a.url).localeCompare(getDomain(b.url))
+  );
+
+  for (let i = 0; i < sorted.length; i++) {
+    await browser.tabs.move(sorted[i].id, { index: i });
+  }
+}
+
+async function sortTabsByTitle() {
+  const tabs = await browser.tabs.query({ currentWindow: true });
+
+  const sorted = [...tabs].sort((a, b) =>
+    (a.title || "").localeCompare(b.title || "")
+  );
+
+  for (let i = 0; i < sorted.length; i++) {
+    await browser.tabs.move(sorted[i].id, { index: i });
+  }
+}
+
+async function sortTabsByLastAccessed() {
+  const tabs = await browser.tabs.query({ currentWindow: true });
+
+  const sorted = [...tabs].sort((a, b) =>
+    b.lastAccessed - a.lastAccessed
+  );
+
+  for (let i = 0; i < sorted.length; i++) {
+    await browser.tabs.move(sorted[i].id, { index: i });
+  }
+}
+
+// -----------
 
 searchInput.addEventListener("input", () => {
   selectedIndex = 0;
@@ -194,7 +326,7 @@ searchInput.addEventListener("keydown", (e) => {
   } else if (e.key === "Enter" && currentResults.length > 0) {
     e.preventDefault();
     
-    activateTab(currentResults[selectedIndex].item);
+    activateResult(currentResults[selectedIndex]);
   }
 });
 

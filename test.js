@@ -37,6 +37,15 @@ async function pressKey(driver, key) {
   }, key);
 }
 
+async function setSearchQuery(driver, query) {
+  await driver.executeScript((q) => {
+    const input = document.getElementById('search');
+    input.value = q;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  }, query);
+  await sleep(200);
+}
+
 async function isSelectedVisible(driver) {
   return driver.executeScript(() => {
     const selected = document.querySelector('#results li.selected');
@@ -184,6 +193,64 @@ async function main() {
 
     } catch (e) {
       results.error('Popup lists tabs', e);
+    }
+
+    console.log('----- Sort Command Tests -----');
+
+    await driver.get(popupUrl);
+    await sleep(1500);
+
+    // Typing "sort" shows the sorting command rows (prepended)
+    try {
+      await setSearchQuery(driver, 'sort');
+
+      const commandTitles = await driver.executeScript(() => {
+        const rows = Array.from(document.querySelectorAll('#results li.command .command-row'));
+        return rows.map(r => (r.textContent || '').replace(/^⚡\s*/u, '').trim());
+      });
+
+      const expected = [
+        'Sort tabs by URL',
+        'Sort tabs by domain',
+        'Sort tabs by title',
+        'Sort tabs by last accessed'
+      ];
+
+      const firstIsCommand = await driver.executeScript(() => {
+        const first = document.querySelector('#results li');
+        return !!first && first.classList.contains('command');
+      });
+
+      if (!firstIsCommand) {
+        results.fail('Sort commands prepended to results', 'First item not a command');
+      } else {
+        results.pass('Sort commands prepended to results');
+      }
+
+      if (commandTitles.length >= expected.length &&
+          expected.every((t, i) => commandTitles[i] === t)) {
+        results.pass('Typing "sort" shows 4 sorting commands');
+      } else {
+        results.fail('Typing "sort" shows 4 sorting commands', JSON.stringify({ commandTitles }));
+      }
+
+    } catch (e) {
+      results.error('Typing "sort" shows sorting commands', e);
+    }
+
+    // Short query "s" should not show any commands
+    try {
+      await setSearchQuery(driver, 's');
+
+      const commandCount = await driver.executeScript(() =>
+        document.querySelectorAll('#results li.command').length
+      );
+
+      if (commandCount === 0) results.pass('Short query does not show commands');
+      else results.fail('Short query does not show commands', commandCount);
+
+    } catch (e) {
+      results.error('Short query does not show commands', e);
     }
 
     console.log('----- Keyboard Navigation -----');
