@@ -68,6 +68,10 @@ You can change this anytime:
 
 ![With highlighting ON](screenshots/4_light_theme_with_Highlights_on.jpg)
 
+![Sort tabs command](screenshots/5_sort-tabs-command-options.jpg)
+
+![Web Search](screenshots/6_web-search-if-no-results.jpg)
+
 ---
 
 ## ⚙️ Settings
