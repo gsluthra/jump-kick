@@ -3,7 +3,7 @@
   "name": "Jump Kick",
   "version": "1.0",
   "description": "Quickly jump between open tabs with fuzzy keyboard search",
-  "permissions": ["tabs", "activeTab", "storage"],
+  "permissions": ["tabs", "activeTab", "storage", "search"],
   "background": {
     "scripts": ["background/background.js"]
   },

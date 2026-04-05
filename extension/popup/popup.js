@@ -166,6 +166,16 @@ async function activateResult(result) {
     return;
   }
 
+  if (result.type === "webSearch") {
+    try {
+      await browser.search.search({ query: result.query });
+    } catch (e) {
+      console.error("Web search failed", e);
+    }
+    window.close();
+    return;
+  }
+
   const tab = result.item || result;
   activateTab(tab);
 }
@@ -178,11 +188,22 @@ function renderResults(results) {
     const tab = result.item || result;
 
     const li = document.createElement("li");
-    if (isCommand) {
+    if (result.type === "webSearch") {
+      li.classList.add("web-search");
+      const row = document.createElement("div");
+      row.className = "command-row";
+      const q = result.query;
+      const display = q.length > 60 ? `${q.slice(0, 60)}…` : q;
+      row.textContent = "";
+      row.appendChild(document.createTextNode("🔍 Search the web for "));
+      const quoted = document.createElement("span");
+      quoted.textContent = `"${display}"`;
+      row.appendChild(quoted);
+      li.appendChild(row);
+    } else if (isCommand) {
       li.classList.add("command");
       li.innerHTML = `
         <div class="command-row">⚡ ${result.title}</div>
-        </div>
       `;
     } else {
       const title = highlightMatches(tab.title || tab.url, result.matches || [], "title");
@@ -238,6 +259,15 @@ function searchTabs(query) {
     ...commandResults,
     ...tabResults
   ];
+
+  const q = query.trim();
+  if (q.length > 0 && tabResults.length === 0) {
+    results.push({
+      type: "webSearch",
+      query: q
+    });
+  }
+
   return results;
 }
 

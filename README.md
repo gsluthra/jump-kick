@@ -27,8 +27,11 @@ Hit a shortcut, type a few letters, and *kick* straight to the tab you want.
 - 🎯 **Optional Match Highlighting**  
   Highlight matched characters (can be toggled in Settings).
 
+- 🌐 **Web search fallback**  
+  If no open tab matches your query, you can open a row to search the web with Firefox’s default search engine.
+
 - 🚀 **Zero Distractions**  
-  No tracking. No network calls. Works entirely locally.
+  No tracking. Fuzzy tab search runs locally; choosing the web-search row uses your normal search (same as the address bar).
 
 ---
 
@@ -97,8 +100,8 @@ Jump-Kick gives you:
 Jump-Kick:
 
 - Does **not** collect data  
-- Does **not** send anything to servers  
-- Only reads tab titles and URLs locally to power search
+- Reads tab titles and URLs **locally** to power fuzzy search  
+- If you use the **web search** row, Firefox performs that search the same way as from the address bar (your chosen search engine)
 
 ---
 

@@ -253,6 +253,31 @@ async function main() {
       results.error('Short query does not show commands', e);
     }
 
+    console.log('----- Web search fallback -----');
+
+    await driver.get(popupUrl);
+    await sleep(1500);
+
+    try {
+      await setSearchQuery(driver, 'jumpkick_unlikely_token_xyz_9f3a2c1d');
+
+      const webSearchInfo = await driver.executeScript(() => {
+        const li = document.querySelector('#results li.web-search');
+        return {
+          exists: li !== null,
+          text: li ? (li.textContent || '').trim() : ''
+        };
+      });
+
+      if (webSearchInfo.exists && webSearchInfo.text.includes('Search the web')) {
+        results.pass('Web search row when no tab matches');
+      } else {
+        results.fail('Web search row when no tab matches', JSON.stringify(webSearchInfo));
+      }
+    } catch (e) {
+      results.error('Web search row when no tab matches', e);
+    }
+
     console.log('----- Keyboard Navigation -----');
 
     await driver.get(popupUrl);
