@@ -1,0 +1,1 @@
+HEADLESS=1 node test.js
