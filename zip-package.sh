@@ -1,9 +1,16 @@
-zip -r jump-kick.zip \
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+OUT="$ROOT/jump-kick.zip"
+rm -f "$OUT"
+
+cd "$ROOT/extension"
+zip -r "$OUT" \
   manifest.json \
-  background.js \
-  popup.html popup.js popup.css \
-  options.html options.js options.css \
-  fuse.min.js \
-  icons \
-  LICENSE.md \
-  NOTICE.md
+  background/background.js \
+  popup/popup.html popup/popup.js popup/popup.css popup/fuse.min.js \
+  options/options.html options/options.js options/options.css \
+  icons
+
+cd "$ROOT"
+zip -j "$OUT" LICENSE.md NOTICE.md

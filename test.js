@@ -14,7 +14,7 @@ const {
   sleep, TestResults
 } = require('selenium-webext-bridge');
 
-const EXT_DIR = path.join(__dirname);
+const EXT_DIR = path.join(__dirname, 'extension');
 const EXT_ID = 'jump-kick@addon';
 
 const IS_MAC = process.platform === 'darwin';
@@ -111,8 +111,8 @@ async function main() {
 
     if (!extBaseUrl) throw new Error('Missing extension base URL');
 
-    const popupUrl = `${extBaseUrl}/popup.html`;
-    const optionsUrl = `${extBaseUrl}/options.html`;
+    const popupUrl = `${extBaseUrl}/popup/popup.html`;
+    const optionsUrl = `${extBaseUrl}/options/options.html`;
 
     console.log('----- Options Page -----');
 

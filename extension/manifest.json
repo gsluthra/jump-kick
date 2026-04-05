@@ -5,10 +5,10 @@
   "description": "Quickly jump between open tabs with fuzzy keyboard search",
   "permissions": ["tabs", "activeTab", "storage"],
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background/background.js"]
   },
   "browser_action": {
-    "default_popup": "popup.html",
+    "default_popup": "popup/popup.html",
     "default_title": "jump-kick: Quick Tab Switcher",
     "default_icon": {
       "16": "icons/icon-16.png",
@@ -28,7 +28,7 @@
     }
   },
   "options_ui": {
-    "page": "options.html",
+    "page": "options/options.html",
     "open_in_tab": true
   },
   "icons": {

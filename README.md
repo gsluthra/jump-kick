@@ -1,4 +1,4 @@
-# ![Jump-Kick Icon](icons/icon-128.png) Jump-Kick: Lightning Fast Tab Switcher for Firefox
+# ![Jump-Kick Icon](extension/icons/icon-128.png) Jump-Kick: Lightning Fast Tab Switcher for Firefox
 
 **Jump-Kick** lets you instantly jump to any open tab using a powerful fuzzy search — just like a command palette for your browser.
 
@@ -116,7 +116,7 @@ Jump-Kick:
 1. In firefox, open an new tab and type `about:debugging`
 2. On the left side, select: **This Firefox**
 3. Click **Load Temporary Add-on**
-4. Select `manifest.json`
+4. Select `extension/manifest.json` (inside this repository)
 5. You should now be able to use the Extension.
 
 ---
@@ -126,12 +126,12 @@ Jump-Kick:
 
 This extension is built using the Firefox WebExtensions API.
 
-Main components:
+Main components (under `extension/`):
 
-- `popup.js` — UI + fuzzy search logic  
-- `background.js` — Keyboard shortcut + tooltip  
-- `options.html/js` — Settings page  
-- `Fuse.js` — Lightweight fuzzy search library
+- `extension/popup/` — Popup UI (`popup.html`, `popup.js`, `popup.css`) + fuzzy search  
+- `extension/background/` — Keyboard shortcut + tooltip (`background.js`)  
+- `extension/options/` — Settings page (`options.html`, `options.js`, `options.css`)  
+- `fuse.min.js` (in `extension/popup/`) — Fuse.js fuzzy search library
 
 Run integration tests with: `node test.js`
 
